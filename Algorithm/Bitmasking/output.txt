@@ -1,0 +1,38 @@
+Left shift
+5 << 1: 10
+5 << 2: 20
+
+Right shift
+5 >> 1: 2
+5 >> 2: 1
+
+And: 
+12 & 25: 8
+
+or: 
+5 | 2: 7
+
+Not operator: 
+~5: -6
+
+xor: 5^2: 7
+5^5: 0
+
+find the unique: 
+3
+
+Odd or even: 
+3 is odd
+
+bitsNeedToChangeToMakeAtoB: 1
+
+removeLastSetBit: 8
+
+swap(xor): a: 7, b: 0
+
+extractithBit: 8
+
+changeIthBit: 13
+
+changeIthBit: 5
+
