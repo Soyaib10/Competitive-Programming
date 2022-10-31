@@ -1,0 +1,1 @@
+set_symmetric_difference(v.begin(), v.end(), v1.begin(), v1.end(), back_inserter(v2));
