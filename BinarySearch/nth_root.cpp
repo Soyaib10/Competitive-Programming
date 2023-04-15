@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
-using namespace std;
 #define ll long long int
+using namespace std;
 
 ll n, m, k;
 double x, y;
@@ -20,8 +20,9 @@ void solve() {
         if(ok(mid, y)) lo = mid;
         else hi = mid;
     }
-    cout << setprecision(10) << lo << nl;
+    cout << setprecision(10) << lo << "\n";
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
