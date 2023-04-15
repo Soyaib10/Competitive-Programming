@@ -14,8 +14,9 @@ int binarySearch(vector <int> &v, int x, int low, int high) {
 
 int main(void) {
     vector <int> v = {1, 2, 3, 45};
-    int x = 45, n = v.size();
-    int result = binarySearch(v, x, 0, n - 1);
+    int x = 45, n = v.size(), result = binarySearch(v, x, 0, n - 1);
     if (result == -1) cout << -1;
     else cout << result;
+    
+    return 0;
 }
