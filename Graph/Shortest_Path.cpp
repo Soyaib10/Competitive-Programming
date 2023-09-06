@@ -9,8 +9,8 @@ int dist[N], parent[N];
 
 void bfs(int source) {
     queue<int> q;
-    q.push(source); 
-    vis[source] = true; 
+    q.push(source);
+    vis[source] = true;
     dist[source] = 0;
     while (!q.empty()) {
         int u = q.front();
@@ -28,8 +28,8 @@ void bfs(int source) {
     // print distance of all the nodes from root.
     for (int i = 1; i <= 4; i++) cout << dist[i] << ' ';
     cout << '\n';
-    
-    // print shortest parh for a node.
+
+    // print shortest path for a node.
     int node = 4;
     while (node != 1) {
         cout << node << " ";
@@ -39,10 +39,10 @@ void bfs(int source) {
 }
 
 void solve() {
-    int n, m; 
+    int n, m;
     cin >> n >> m;
     while (m--) {
-        int u, v; 
+        int u, v;
         cin >> u >> v;
         g[u].push_back(v);
         g[v].push_back(u);
