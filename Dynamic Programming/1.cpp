@@ -2,17 +2,24 @@
 #define ll long long int
 using namespace std;
 
-int f(int n, vector<int>& dp) {
-    if (n <= 1) return n;
-    if (dp[n] == -1) dp[n] = f(n - 1, dp) + f(n - 2, dp);
-    return dp[n];
-}
-
 void solve() {
-    int n;
-    cin >> n;
-    vector<int> dp(n + 1, -1);
-    cout << f(n, dp);
+    int n, k;
+    cin >> n >> k;
+    vector<int> v(n), dp(n + 1, -1);
+    for (int i = 0; i < n; i++) cin >> v[i];
+
+    dp[0] = 0;
+    for (int i = 1; i < n; i++) {
+        int mn = INT_MAX;
+        for (int j = 1; j <= k; j++) {
+            if (i - j >= 0) {
+                int step = dp[i - j] + abs(v[i] - v[i - j]);
+                mn = min(step, mn);
+            }
+        }
+        dp[i] = mn;
+    }
+    cout << dp[n - 1];
 }
 
 int main() {
