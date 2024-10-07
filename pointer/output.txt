@@ -1,0 +1,8 @@
+a: 5
+p: 0x7fffb480d4e8
+&a: 0x7fffb480d4e8
+&p: 0x7fffb480d4f0
+*p: 5
+a's value after changing using *p: 10
+p: 0x7fffb480d4e8
+*p: 20
