@@ -44,6 +44,12 @@ void callByReference(int *x) {
 	*x = *x + 1;
 }
 
+void swap(int &x, int &y) {
+	int temp = x;
+	x = y;
+	y = temp;
+}
+
 void arrayPointer() {
 	int a[3] = {2, 3, 4};
 	printf("address: a + 1: %d, &a[1]: %d\n", a, &a);
@@ -70,8 +76,14 @@ int main() {
 	// callByReference(&x);
 	// cout << "x:" << x << "\n";
 
-	int a[3] = {2, 3, 4};
-	int len = sizeof(a) / sizeof(a[0]);
-	cout << arrayPassByReference(a, len);
+	int a = 10, b= 20;
+	swap(a, b);
+	cout << "a: " << a << ", b: " << b << "\n";
+
+	// int a[3] = {2, 3, 4};
+	// int len = sizeof(a) / sizeof(a[0]);
+	// cout << arrayPassByReference(a, len);
+
+
 	return 0;
 }
