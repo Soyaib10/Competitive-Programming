@@ -8,8 +8,8 @@ public:
 	int data; // ডাটা ধারণ করার জন্য
 	Node *next; // পরবর্তী নোডের পয়েন্টার
 
-	Node(int value) {
-		data = value;
+	Node(int data) {
+		this->data = data;
 		next = NULL;
 	}
 };
@@ -23,9 +23,9 @@ void printList(Node* n) {
 
 int main() {
     Node *head = new Node(5);
-    // cout << head->data << "\n";
-    // cout << head->next << "\n";
-    Node *head = new Node(3);
+    cout << head->data << "\n";
+    cout << head->next << "\n";
+
     // লিঙ্কড লিস্ট প্রিন্ট করা
     printList(head);
 
