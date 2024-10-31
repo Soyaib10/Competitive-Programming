@@ -1,1 +1,2 @@
-0 30 10 
+Forward: 1 2 3 4 5 
+Backward: 5 4 3 2 1 
