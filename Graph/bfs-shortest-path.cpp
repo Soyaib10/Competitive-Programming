@@ -5,22 +5,37 @@ using namespace std;
 const int N = 1e5 + 9;
 vector <int> g[N];
 bool vis[N];
+int dist[N], parent[N];
 
 void bfs(int source) {
-    queue <int> q;
+    queue<int> q;
     q.push(source);
     vis[source] = true;
+    dist[source] = 0;
     while (!q.empty()) {
         int u = q.front();
-        cout << u << " "; // print values that are travarsed
         q.pop();
         for (auto i : g[u]) {
             if (!vis[i]) {
                 q.push(i);
+                parent[i] = u;
+                dist[i] = dist[u] + 1;
                 vis[i] = true;
             }
         }
     }
+
+    // print distance of all the nodes from root.
+    for (int i = 1; i <= 4; i++) cout << dist[i] << ' ';
+    cout << '\n';
+
+    // print shortest path for a node.
+    int node = 4;
+    while (node != 1) {
+        cout << node << " ";
+        node = parent[node];
+    }
+    cout << 1 << "\n";
 }
 
 void solve() {
@@ -32,7 +47,7 @@ void solve() {
         g[u].push_back(v);
         g[v].push_back(u);
     }
-    bfs(2);  
+    bfs(1);
 }
 
 int main() {

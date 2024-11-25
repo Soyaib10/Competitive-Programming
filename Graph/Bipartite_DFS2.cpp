@@ -6,22 +6,13 @@ const int N = 1e5 + 9;
 vector <int> g[N];
 bool vis[N];
 
-bool check(int source, int color[]) {
-    queue <int> q;
-    q.push(source);
-    color[source] = 0;
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
-        for (auto i : g[u]) {
-            // if adjacent node yet not colored give it a oposite color
-            if (color[i] == -1) {
-                color[i] = !color[u];
-                q.push(i);
-            }
-            // is the parent and child has same color return false
-            else if (color[i] == color[u]) return false;
+bool dfs(int u, int color[]) {
+    for (auto i : g[u]) {
+        if (color[i] == -1) {
+            color[i] = !color[u]; // color the child with different value of parent
+            if (!dfs(i, color)) return false;
         }
+        else if (color[i] == color[u]) return false; // parent color and child color are same
     }
     return true;
 }
@@ -40,7 +31,7 @@ void solve() {
     for (int i = 0; i < n; i++) color[i] = -1;
     for (int i = 0; i < n; i++) {
         if (color[i] == -1) {
-            if (check(i, color) == false) {
+            if (dfs(i, color) == false) {
                 cout << "Not Bipartite" << "\n";
                 return;
             }

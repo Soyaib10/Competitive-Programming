@@ -3,8 +3,8 @@
 using namespace std;
 
 const int N = 1e5 + 7;
-vector <int> g[N];
-stack <int> st;
+vector<int> g[N];
+stack<int> st;
 bool vis[N];
 
 void dfs(int u) {

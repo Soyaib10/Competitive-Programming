@@ -4,18 +4,17 @@ using namespace std;
 
 const int N = 1e5 + 7;
 vector <int> g[N], v;
-int color[N], parent[N];
-bool is_true;
+int parent[N];
+bool vis[N];
 
-void dfs(int u) {
-    color[u] = 1;
+bool dfs(int u, int par) {
+    vis[u] = true;
+    parent[u] = par;
     for (auto i : g[u]) {
-        if (color[i] == 0) {
-            parent[i] = u;
-            dfs(i);
+        if (!vis[i]) {
+            if (dfs(i, u) == true) return true;
         }
-        else if (color[i] == 1) {
-            is_true = true;
+        else if (i != par) {
             int node = u;
             while (node != i) {
                 v.push_back(node);
@@ -23,9 +22,10 @@ void dfs(int u) {
             }
             v.push_back(i);
             v.push_back(u);
+            return true;
         }
     }
-    color[u] = 2;
+    return false;
 }
 
 void solve() {
@@ -35,11 +35,12 @@ void solve() {
         int u, v;
         cin >> u >> v;
         g[u].push_back(v);
+        g[v].push_back(u);
     }
+
     for (int i = 1; i <= n; i++) {
-        if (color[i] == 0) {
-            dfs(i);
-            if (is_true) {
+        if (!vis[i]) {
+            if (dfs(i, 0)) {
                 cout << v.size() << "\n";
                 for (auto i : v) cout << i << " ";
                 return;

@@ -2,40 +2,36 @@
 #define ll long long int
 using namespace std;
 
-const int N = 1e5 + 7;
-vector <int> g[N];
+const int N = 1e5 + 9;
+vector<int> g[N];
+int col[N];
 bool vis[N];
+bool ok;
 
-bool dfs(int u, int parent) {
+void dfs(int u) {
     vis[u] = true;
     for (auto i : g[u]) {
         if (!vis[i]) {
-            if (dfs(i, u)) return true;
+            col[i] = col[u] ^ 1;
+            dfs(i);
         }
-        else if (i != parent) return true;
+        else if (col[u] == col[i]) ok = false;
     }
-    return false;
 }
 
 void solve() {
     int n, m;
     cin >> n >> m;
     while (m--) {
-        int u, v;
-        cin >> u >> v;
+        int u, v; cin >> u >> v;
         g[u].push_back(v);
         g[v].push_back(u);
     }
 
-    for (int i = 1; i <= n; i++) {
-        if (!vis[i]) {
-            if (dfs(i, 0)) {
-                cout << "YES\n";
-                return;
-            }
-        }
-    }
-    cout << "NO\n";
+    ok = true;
+    for (int i = 1; i <= n; i++) if (!vis[i]) dfs(i);
+    if (ok) cout << "YES\n";
+    else cout << "NO\n";
 }
 
 int main() {
